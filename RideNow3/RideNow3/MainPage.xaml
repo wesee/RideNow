@@ -40,11 +40,11 @@
          <!--Panorama control-->
         <phone:Panorama Title="ride now" TitleTemplate="{StaticResource SmallPanoramaTitle}">
             <phone:Panorama.Background>
-                <ImageBrush ImageSource="/RideNow3;component/Assets/PanoramaBackground.png"/>
+                <ImageBrush ImageSource="/RideNow3;component/Assets/PanoramaBackgroundLite.png"/>
             </phone:Panorama.Background>
 
             <!--Panorama item scan-->
-            <phone:PanoramaItem Header="scan" Orientation="Horizontal" HeaderTemplate="{StaticResource SmallPanoramaHeader}" FontFamily="Portable User Interface">
+            <phone:PanoramaItem Header="scan QR code" Orientation="Horizontal" HeaderTemplate="{StaticResource SmallPanoramaHeader}" FontFamily="Portable User Interface">
                 <!--Double wide Panorama with large image placeholders-->
                 <!--LayoutRoot is the root grid where all page content is placed-->
                 <Grid x:Name="LayoutScan" Background="Transparent">
@@ -85,14 +85,41 @@
 
 
             <!--Panorama item map-->
-            <phone:PanoramaItem Header="map" HeaderTemplate="{StaticResource SmallPanoramaHeader}" >
+            <phone:PanoramaItem Header="find a bicycle" HeaderTemplate="{StaticResource SmallPanoramaHeader}" >
                 <!--ContentPanel - place additional content here-->
                 <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
                 </Grid>
             </phone:PanoramaItem>
 
             <!--Panorama item setting-->
-            <phone:PanoramaItem Header="setting"  HeaderTemplate="{StaticResource SmallPanoramaHeader}" >
+            <phone:PanoramaItem Header="my account"  HeaderTemplate="{StaticResource SmallPanoramaHeader}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="0" Grid.Column="0" Margin="12, 10">Photo</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="0" Grid.Column="1" Margin="12, 10">Rakesh</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="1" Grid.Column="0" Margin="12, 10">Name</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="1" Grid.Column="1" Margin="12, 10">Rakesh</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="2" Grid.Column="0" Margin="12, 10">Mobile No</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="2" Grid.Column="1" Margin="12, 10">0123456789</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="3" Grid.Column="0" Margin="12, 10">Profile Point</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="3" Grid.Column="1" Margin="12, 10">1000</TextBlock>
+                    <TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="30" Grid.Row="4" Grid.Column="0" Margin="12, 10">Bicycle in Service</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="4" Grid.Column="1" Margin="12, 10">2</TextBlock>
+
+
+                </Grid>
+
             </phone:PanoramaItem>
 
 
