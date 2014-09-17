@@ -203,7 +203,7 @@ namespace RideNow3
 
             // Make my current location the center of the Map.
             MyMap.Center = myGeoCoordinate;
-            MyMap.ZoomLevel = 15;
+            MyMap.ZoomLevel = 13;
 
             // Create a small circle to mark the current location.
             Ellipse myCircle = new Ellipse();
@@ -214,17 +214,34 @@ namespace RideNow3
 
             // Create a MapOverlay to contain the circle.
             MapOverlay myLocationOverlay = new MapOverlay();
-            myLocationOverlay.Content = myCircle;
-            myLocationOverlay.PositionOrigin = new Point(0.5, 0.5);
-            myLocationOverlay.GeoCoordinate = myGeoCoordinate;
+            //myLocationOverlay.Content = myCircle;
+            //myLocationOverlay.PositionOrigin = new Point(0.5, 0.5);
+            //myLocationOverlay.GeoCoordinate = myGeoCoordinate;
 
             // Create a MapLayer to contain the MapOverlay.
             MapLayer myLocationLayer = new MapLayer();
+            //myLocationLayer.Add(myLocationOverlay);
+
+            // create random point
+            var rand = new Random();
+
+            //myLocationOverlay = new MapOverlay();
+            myLocationOverlay.Content = myCircle;
+            myLocationOverlay.PositionOrigin = new Point(0.5, 0.5);
+            GeoCoordinate coordinate = new GeoCoordinate(myGeoCoordinate.Latitude + rand.NextDouble() * 0.05 - 0.025, myGeoCoordinate.Longitude + rand.NextDouble() * 0.05 - 0.025);
+            myLocationOverlay.GeoCoordinate = coordinate;
+
+            //myLocationLayer = new MapLayer();
             myLocationLayer.Add(myLocationOverlay);
+
+
+
 
             // Add the MapLayer to the Map.
             MyMap.Layers.Add(myLocationLayer);
 
         }
+
+
     }
 }
