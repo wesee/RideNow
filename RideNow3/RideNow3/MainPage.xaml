@@ -44,13 +44,13 @@
             </phone:Panorama.Background>
 
             <!--Panorama item scan-->
-            <phone:PanoramaItem Header="scan QR code" Orientation="Horizontal" HeaderTemplate="{StaticResource SmallPanoramaHeader}" FontFamily="Portable User Interface">
+            <phone:PanoramaItem Orientation="Horizontal" HeaderTemplate="{StaticResource SmallPanoramaHeader}" FontFamily="Portable User Interface">
                 <!--Double wide Panorama with large image placeholders-->
                 <!--LayoutRoot is the root grid where all page content is placed-->
                 <Grid x:Name="LayoutScan" Background="Transparent">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="100" />
+                        <RowDefinition Height="25" />
                     </Grid.RowDefinitions>
 
                     <Canvas x:Name="viewfinderCanvas">
@@ -74,25 +74,25 @@
             FontSize="40"
             Visibility="Collapsed"/>
                     </Canvas>
-                    <!--Used for debugging >-->
+                    <!--Used for debugging >
                     <StackPanel Grid.Row="1" Margin="20, 0">
                         <TextBlock x:Name="tbBarcodeType" FontWeight="ExtraBold" />
                         <TextBlock x:Name="tbBarcodeData" FontWeight="ExtraBold" TextWrapping="Wrap" />
-                    </StackPanel>
+                    </StackPanel-->
                 </Grid>
             </phone:PanoramaItem>
 
 
 
             <!--Panorama item map-->
-            <phone:PanoramaItem Header="find a bicycle" HeaderTemplate="{StaticResource SmallPanoramaHeader}" >
+            <phone:PanoramaItem HeaderTemplate="{StaticResource SmallPanoramaHeader}" >
                 <!--ContentPanel - place additional content here-->
-                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,25">
                 </Grid>
             </phone:PanoramaItem>
 
             <!--Panorama item setting-->
-            <phone:PanoramaItem Header="my account"  HeaderTemplate="{StaticResource SmallPanoramaHeader}" >
+            <phone:PanoramaItem  HeaderTemplate="{StaticResource SmallPanoramaHeader}" FontFamily="Portable User Interface" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -106,17 +106,15 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="0" Grid.Column="0" Margin="12, 10">Photo</TextBlock>
-                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="0" Grid.Column="1" Margin="12, 10">Rakesh</TextBlock>
-                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="1" Grid.Column="0" Margin="12, 10">Name</TextBlock>
-                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="1" Grid.Column="1" Margin="12, 10">Rakesh</TextBlock>
-                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="2" Grid.Column="0" Margin="12, 10">Mobile No</TextBlock>
-                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="2" Grid.Column="1" Margin="12, 10">0123456789</TextBlock>
-                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="3" Grid.Column="0" Margin="12, 10">Profile Point</TextBlock>
-                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="3" Grid.Column="1" Margin="12, 10">1000</TextBlock>
-                    <TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="30" Grid.Row="4" Grid.Column="0" Margin="12, 10">Bicycle in Service</TextBlock>
-                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="4" Grid.Column="1" Margin="12, 10">2</TextBlock>
-
+                    <Image Grid.Row="0" Grid.Column="0" Margin="12, 10" Source="/RideNow3;component/Assets/profile1.png"/>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="0" Grid.Column="1" Margin="12, 10" VerticalAlignment="Center">Rakesh</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="1" Grid.Column="0" Margin="12, 10" FontFamily="Portable User Interface">Mobile No</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="1" Grid.Column="1" Margin="12, 10" FontFamily="Portable User Interface">0123456789</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="2" Grid.Column="0" Margin="12, 10">Profile Point</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="2" Grid.Column="1" Margin="12, 10">1000</TextBlock>
+                    <TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="30" Grid.Row="3" Grid.Column="0" Margin="12, 10" FontFamily="Portable User Interface">Bicycle in Service</TextBlock>
+                    <TextBlock Foreground="Black" FontSize="30" Grid.Row="3" Grid.Column="1" Margin="12, 10">2</TextBlock>
+                    <Button Name="generate" Content="generate QR" Grid.Row="4" Grid.ColumnSpan="2" FontFamily="Portable User Interface" Height="100" Margin="0,100,0,0" Background="LightBlue" BorderThickness="0" />
 
                 </Grid>
 

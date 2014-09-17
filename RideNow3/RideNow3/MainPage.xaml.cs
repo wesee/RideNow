@@ -168,13 +168,13 @@ namespace RideNow3
 
         void _bcReader_ResultFound(Result obj)
         {
-            // If a new barcode is found, vibrate the device and display the barcode details in the UI
-            if (!obj.Text.Equals(tbBarcodeData.Text))
-            {
-                VibrateController.Default.Start(TimeSpan.FromMilliseconds(100));
-                tbBarcodeType.Text = obj.BarcodeFormat.ToString();
-                tbBarcodeData.Text = obj.Text;
-            }
+            //// If a new barcode is found, vibrate the device and display the barcode details in the UI
+            //if (!obj.Text.Equals(tbBarcodeData.Text))
+            //{
+            //    VibrateController.Default.Start(TimeSpan.FromMilliseconds(100));
+            //    tbBarcodeType.Text = obj.BarcodeFormat.ToString();
+            //    tbBarcodeData.Text = obj.Text;
+            //}
         }
 
         private void ScanForBarcode()
@@ -207,33 +207,41 @@ namespace RideNow3
 
             // Create a small circle to mark the current location.
             Ellipse myCircle = new Ellipse();
-            myCircle.Fill = new SolidColorBrush(Colors.Blue);
+            myCircle.Fill = new SolidColorBrush(Colors.Red);
             myCircle.Height = 20;
             myCircle.Width = 20;
             myCircle.Opacity = 50;
 
             // Create a MapOverlay to contain the circle.
             MapOverlay myLocationOverlay = new MapOverlay();
-            //myLocationOverlay.Content = myCircle;
-            //myLocationOverlay.PositionOrigin = new Point(0.5, 0.5);
-            //myLocationOverlay.GeoCoordinate = myGeoCoordinate;
+            myLocationOverlay.Content = myCircle;
+            myLocationOverlay.PositionOrigin = new Point(0.5, 0.5);
+            myLocationOverlay.GeoCoordinate = myGeoCoordinate;
 
             // Create a MapLayer to contain the MapOverlay.
             MapLayer myLocationLayer = new MapLayer();
-            //myLocationLayer.Add(myLocationOverlay);
+            myLocationLayer.Add(myLocationOverlay);
 
             // create random point
             var rand = new Random();
 
-            //myLocationOverlay = new MapOverlay();
-            myLocationOverlay.Content = myCircle;
-            myLocationOverlay.PositionOrigin = new Point(0.5, 0.5);
-            GeoCoordinate coordinate = new GeoCoordinate(myGeoCoordinate.Latitude + rand.NextDouble() * 0.05 - 0.025, myGeoCoordinate.Longitude + rand.NextDouble() * 0.05 - 0.025);
-            myLocationOverlay.GeoCoordinate = coordinate;
+            for (int i = 0; i < 5; i++)
+            {
+                // Create a small circle to mark the current location.
+                Ellipse myCircle2 = new Ellipse();
+                myCircle2.Fill = new SolidColorBrush(Colors.Blue);
+                myCircle2.Height = 20;
+                myCircle2.Width = 20;
+                myCircle2.Opacity = 50;
 
-            //myLocationLayer = new MapLayer();
-            myLocationLayer.Add(myLocationOverlay);
+                MapOverlay myLocationOverlay2 = new MapOverlay();
+                myLocationOverlay2.Content = myCircle2;
+                myLocationOverlay2.PositionOrigin = new Point(0.5, 0.5);
+                GeoCoordinate coordinate = new GeoCoordinate(myGeoCoordinate.Latitude + rand.NextDouble() * 0.05 - 0.025, myGeoCoordinate.Longitude + rand.NextDouble() * 0.05 - 0.025);
+                myLocationOverlay2.GeoCoordinate = coordinate;
 
+                myLocationLayer.Add(myLocationOverlay2);
+            }
 
 
 
