@@ -12,6 +12,8 @@ using System.Windows.Input;
 using ZXing;
 using System.Windows.Threading;
 using System.Windows.Media.Imaging;
+using Microsoft.Phone.Maps.Controls;
+using System.Device.Location;
 
 namespace RideNow3
 {
@@ -28,6 +30,12 @@ namespace RideNow3
         public MainPage()
         {
             InitializeComponent();
+
+            Map MyMap = new Map();
+            //MyMap.Center = new GeoCoordinate(47.6097, -122.3331);
+            MyMap.Center = new GeoCoordinate(2.9237232, 101.6462635);
+            MyMap.ZoomLevel = 15;
+            ContentPanel.Children.Add(MyMap);
 
             // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
