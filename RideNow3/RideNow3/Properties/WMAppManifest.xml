@@ -2,7 +2,7 @@
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
   <App xmlns="" ProductID="{3e3bd3d1-ccb5-4d58-802d-7861cbaabe1d}" Title="RideNow3" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="RideNow3 author" Description="Sample description" Publisher="RideNow3" PublisherID="{289b18b7-0c6e-4781-b580-6da8e71ebfc2}">
-    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">Assets\logo_100.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
@@ -19,9 +19,9 @@
     <Tokens>
       <PrimaryToken TokenID="RideNow3Token" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\logo_159.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\logo_159.png</BackgroundImageURI>
           <Title>RideNow3</Title>
           <BackContent>
           </BackContent>

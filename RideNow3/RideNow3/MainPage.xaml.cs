@@ -229,7 +229,9 @@ namespace RideNow3
             {
                 // Create a small circle to mark the current location.
                 Ellipse myCircle2 = new Ellipse();
-                myCircle2.Fill = new SolidColorBrush(Colors.Blue);
+                //myCircle2.Fill = new SolidColorBrush(Colors.Blue);
+                myCircle2.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
+                myCircle2.StrokeThickness = 5; 
                 myCircle2.Height = 20;
                 myCircle2.Width = 20;
                 myCircle2.Opacity = 50;
