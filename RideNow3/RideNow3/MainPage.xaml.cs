@@ -14,6 +14,9 @@ using System.Windows.Threading;
 using System.Windows.Media.Imaging;
 using Microsoft.Phone.Maps.Controls;
 using System.Device.Location;
+using Windows.Devices.Geolocation;
+using System.Windows.Shapes;
+using System.Windows.Media;
 
 namespace RideNow3
 {
@@ -25,17 +28,21 @@ namespace RideNow3
         private DispatcherTimer _scanTimer;
         private WriteableBitmap _previewBuffer;
 
+        private Map MyMap;
+
 
         // Constructor
         public MainPage()
         {
             InitializeComponent();
 
-            Map MyMap = new Map();
+            MyMap = new Map();
             //MyMap.Center = new GeoCoordinate(47.6097, -122.3331);
-            MyMap.Center = new GeoCoordinate(2.9237232, 101.6462635);
-            MyMap.ZoomLevel = 15;
+            //MyMap.Center = new GeoCoordinate(2.9237232, 101.6462635);
+            //MyMap.ZoomLevel = 15;
             ContentPanel.Children.Add(MyMap);
+
+            ShowMyLocationOnTheMap();
 
             // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
@@ -184,5 +191,40 @@ namespace RideNow3
 
 
 
+        private async void ShowMyLocationOnTheMap()
+        {
+
+            // Get my current location.
+            Geolocator myGeolocator = new Geolocator();
+            Geoposition myGeoposition = await myGeolocator.GetGeopositionAsync();
+            Geocoordinate myGeocoordinate = myGeoposition.Coordinate;
+            GeoCoordinate myGeoCoordinate =
+                CoordinateConverter.ConvertGeocoordinate(myGeocoordinate);
+
+            // Make my current location the center of the Map.
+            MyMap.Center = myGeoCoordinate;
+            MyMap.ZoomLevel = 15;
+
+            // Create a small circle to mark the current location.
+            Ellipse myCircle = new Ellipse();
+            myCircle.Fill = new SolidColorBrush(Colors.Blue);
+            myCircle.Height = 20;
+            myCircle.Width = 20;
+            myCircle.Opacity = 50;
+
+            // Create a MapOverlay to contain the circle.
+            MapOverlay myLocationOverlay = new MapOverlay();
+            myLocationOverlay.Content = myCircle;
+            myLocationOverlay.PositionOrigin = new Point(0.5, 0.5);
+            myLocationOverlay.GeoCoordinate = myGeoCoordinate;
+
+            // Create a MapLayer to contain the MapOverlay.
+            MapLayer myLocationLayer = new MapLayer();
+            myLocationLayer.Add(myLocationOverlay);
+
+            // Add the MapLayer to the Map.
+            MyMap.Layers.Add(myLocationLayer);
+
+        }
     }
 }
