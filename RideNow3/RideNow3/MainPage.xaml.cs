@@ -17,6 +17,8 @@ using System.Device.Location;
 using Windows.Devices.Geolocation;
 using System.Windows.Shapes;
 using System.Windows.Media;
+using System.Threading.Tasks;
+using Windows.Phone.Speech.Synthesis;
 
 namespace RideNow3
 {
@@ -168,12 +170,26 @@ namespace RideNow3
 
         void _bcReader_ResultFound(Result obj)
         {
-            //// If a new barcode is found, vibrate the device and display the barcode details in the UI
-            //if (!obj.Text.Equals(tbBarcodeData.Text))
+
+            //await TextToSpeech(obj.Text);
+
+            //_scanTimer.Stop();
+
+            // If a new barcode is found, vibrate the device and display the barcode details in the UI
+            if (!obj.Text.Equals(tbBarcodeData.Text))
+            {
+                VibrateController.Default.Start(TimeSpan.FromMilliseconds(100));
+                tbBarcodeType.Text = obj.BarcodeFormat.ToString();
+                tbBarcodeData.Text = obj.Text;
+            }
+
+            //if (scanHeader.Header == null) scanHeader.Header = "";
+
+            //if (!obj.Text.Equals(scanHeader.Header.ToString()))
             //{
             //    VibrateController.Default.Start(TimeSpan.FromMilliseconds(100));
-            //    tbBarcodeType.Text = obj.BarcodeFormat.ToString();
-            //    tbBarcodeData.Text = obj.Text;
+            //    scanHeader.Header = obj.BarcodeFormat.ToString();
+            //    scanHeader.Header = obj.Text;
             //}
         }
 
@@ -252,6 +268,42 @@ namespace RideNow3
 
         }
 
+
+
+        private static WriteableBitmap GenerateQRCode(string message)
+        {
+            BarcodeWriter _writer = new BarcodeWriter();
+
+            _writer.Renderer = new ZXing.Rendering.WriteableBitmapRenderer()
+            {
+                Foreground = System.Windows.Media.Color.FromArgb(255, 0, 0, 0) // blue
+            };
+
+            _writer.Format = BarcodeFormat.QR_CODE;
+
+
+            _writer.Options.Height = 400;
+            _writer.Options.Width = 400;
+            _writer.Options.Margin = 1;
+
+            var barcodeImage = _writer.Write(message); //tel: prefix for phone numbers
+
+            return barcodeImage;
+        }
+
+        private void btnGenerate(object sender, RoutedEventArgs e)
+        {
+            imgQRCode.Source = GenerateQRCode("this is my bicycle");
+        }
+
+
+        private async Task TextToSpeech(string textToRead)
+        {
+            using (var speech = new SpeechSynthesizer())
+            {
+                await speech.SpeakTextAsync(textToRead);
+            }
+        }
 
     }
 }

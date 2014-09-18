@@ -38,13 +38,13 @@
          -->
 
          <!--Panorama control-->
-        <phone:Panorama Title="ride now" TitleTemplate="{StaticResource SmallPanoramaTitle}">
+        <phone:Panorama Title="Ride Now" TitleTemplate="{StaticResource SmallPanoramaTitle}">
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="/RideNow3;component/Assets/PanoramaBackgroundLite.png"/>
             </phone:Panorama.Background>
 
             <!--Panorama item scan-->
-            <phone:PanoramaItem Orientation="Horizontal" HeaderTemplate="{StaticResource SmallPanoramaHeader}" FontFamily="Portable User Interface">
+            <phone:PanoramaItem x:Name="scanHeader" Orientation="Horizontal" HeaderTemplate="{StaticResource SmallPanoramaHeader}" FontFamily="Portable User Interface">
                 <!--Double wide Panorama with large image placeholders-->
                 <!--LayoutRoot is the root grid where all page content is placed-->
                 <Grid x:Name="LayoutScan" Background="Transparent">
@@ -74,11 +74,11 @@
             FontSize="40"
             Visibility="Collapsed"/>
                     </Canvas>
-                    <!--Used for debugging >
-                    <StackPanel Grid.Row="1" Margin="20, 0">
-                        <TextBlock x:Name="tbBarcodeType" FontWeight="ExtraBold" />
-                        <TextBlock x:Name="tbBarcodeData" FontWeight="ExtraBold" TextWrapping="Wrap" />
-                    </StackPanel-->
+                    <!--Used for debugging -->
+                    <StackPanel Grid.Row="0" Margin="20, 0">
+                        <TextBlock x:Name="tbBarcodeType" Foreground="White" FontWeight="ExtraBold" />
+                        <TextBlock x:Name="tbBarcodeData" Foreground="White" FontWeight="ExtraBold" TextWrapping="Wrap" />
+                    </StackPanel>
                 </Grid>
             </phone:PanoramaItem>
 
@@ -114,13 +114,27 @@
                     <TextBlock Foreground="Black" FontSize="30" Grid.Row="2" Grid.Column="1" Margin="12, 10">1000</TextBlock>
                     <TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="30" Grid.Row="3" Grid.Column="0" Margin="12, 10" FontFamily="Portable User Interface">Bicycle in Service</TextBlock>
                     <TextBlock Foreground="Black" FontSize="30" Grid.Row="3" Grid.Column="1" Margin="12, 10">2</TextBlock>
-                    <Button Name="generate" Content="generate QR" Grid.Row="4" Grid.ColumnSpan="2" FontFamily="Portable User Interface" Height="100" Margin="0,100,0,0" Background="LightBlue" BorderThickness="0" />
+                    <Button Name="generate" Click="btnGenerate" Content="generate QR" Grid.Row="4" Grid.ColumnSpan="2" FontFamily="Portable User Interface" Height="100" Margin="0,100,0,0" Background="LightBlue" BorderThickness="0" />
 
                 </Grid>
 
                 
             </phone:PanoramaItem>
 
+
+            <!--Panorama item gen code-->
+            <phone:PanoramaItem  HeaderTemplate="{StaticResource SmallPanoramaHeader}" FontFamily="Portable User Interface" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="imgQRCode" />
+
+                </Grid>
+
+
+            </phone:PanoramaItem>
 
 
 
