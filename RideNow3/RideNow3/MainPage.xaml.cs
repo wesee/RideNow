@@ -181,6 +181,9 @@ namespace RideNow3
                 VibrateController.Default.Start(TimeSpan.FromMilliseconds(100));
                 tbBarcodeType.Text = obj.BarcodeFormat.ToString();
                 tbBarcodeData.Text = obj.Text;
+
+                MessageBox.Show("Successful check in.\nThanks for using Ride Now.  Enjoy your journey.");
+
             }
 
             //if (scanHeader.Header == null) scanHeader.Header = "";

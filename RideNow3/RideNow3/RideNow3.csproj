@@ -131,6 +131,7 @@
   <ItemGroup>
     <Content Include="Assets\Tiles\logo_159.png" />
     <Content Include="Assets\Tiles\logo_336.png" />
+    <Content Include="Assets\Tiles\logo_691.png" />
     <Resource Include="Assets\PanoramaBackground.png" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
